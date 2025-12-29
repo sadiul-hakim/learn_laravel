@@ -1,3 +1,8 @@
+<style>
+    .input-error {
+        border-color: red;
+    }
+</style>
 <div>
     <fieldset>
         <legend>User Form</legend>
@@ -5,7 +10,8 @@
             @csrf
             <div>
                 <label for="name">Name</label><br />
-                <input type="text" name="name" id="name" value="{{ old('name') }}" />
+                <input type="text" name="name" id="name" value="{{ old('name') }}"
+                    class="{{ $errors->first('name') ? 'input-error' : '' }}" />
                 <p style="color:red;">
                     @error('name')
                         {{ $message }}
