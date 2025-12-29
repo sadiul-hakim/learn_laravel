@@ -10,7 +10,7 @@ class UserFormController extends Controller
 
     public function handleUserData(Request $request):Request{
         $request -> validate([
-            'name'=>'required | min:3 | max:20',
+            'name'=>'required | min:3 | max:20 | uppercase',
             'email'=>'required | email',
             'password'=>'required',
             'date_of_birth'=>'required',
