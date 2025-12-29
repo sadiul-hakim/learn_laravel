@@ -14,7 +14,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+
+        // Global middleware is needed to be appended here
         $middleware -> append(AgeChecker::class);
+
+        // Group Middlewares are needed to be appended here
         $middleware -> appendToGroup('user_middleware',[CountryChecker::class,LanguageChecker::class]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

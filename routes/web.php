@@ -4,6 +4,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserFormController;
+use App\Http\Middleware\LogInChecker;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -18,22 +19,23 @@ Route::get('/about/{text}', [UserController::class, 'aboutUser']); // text is au
 
 Route::redirect('/home', '/');
 
-// Route::view("/contact-us","contact_up");
+// ? Route::view("/contact-us","contact_up");
 
-// Apply middleware separately
+// ! Apply middleware separately
 // Route::get('/user', [UserController::class, 'getUser'])->middleware("user_middleware");
 // Route::get('/user-page', [UserController::class, 'userPage'])->middleware("user_middleware");
 
-// or make group
+// ? or make group
 
 Route::middleware("user_middleware")->group(function () {
-    Route::get('/user', [UserController::class, 'getUser'])->middleware("user_middleware");
-    Route::get('/user-page', [UserController::class, 'userPage'])->middleware("user_middleware");
+    Route::get('/user', [UserController::class, 'getUser']);
+    Route::get('/user-page', [UserController::class, 'userPage']);
 });
 
-// For templates under nested folder use '.', Like admin/admin.blade.php -> admin.admin
+// ? For templates under nested folder use '.', Like admin/admin.blade.php -> admin.admin
 
-Route::view('/user-form', 'user-form');
+// Directly apply middleware here, no need to append inside app.php
+Route::view('/user-form', 'user-form') -> middleware(LogInChecker::class);
 Route::post('/submit-user-data', [UserFormController::class, 'handleUserData']);
 
 Route::view('/user/profile/view', 'profile')->name('pfl');
