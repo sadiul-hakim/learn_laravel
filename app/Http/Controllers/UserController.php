@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View as FacadesView;
 use Illuminate\View\View;
 
 class UserController extends Controller
@@ -18,8 +18,12 @@ class UserController extends Controller
         return "About $name";
     }
 
-    public function userPage(): View
+    public function userPage():View
     {
-        return view("user");
+        if(FacadesView::exists("user")){
+            return view("user");
+        } else{
+            return view("home");
+        }
     }
 }
