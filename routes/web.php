@@ -25,3 +25,5 @@ Route::get("/user-page",[UserController::class,'userPage']);
 
 Route::view("/user-form","user-form");
 Route::post("/submit-user-data",[UserFormController::class,'handleUserData']);
+
+Route::view("/user/profile/view","profile") -> name('pfl');

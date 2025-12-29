@@ -20,6 +20,7 @@ class UserController extends Controller
 
     public function userPage():View
     {
+        // redirect() -> to();
         if(FacadesView::exists("user")){
             return view("user");
         } else{

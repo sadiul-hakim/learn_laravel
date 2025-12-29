@@ -1,5 +1,6 @@
 <h1>Hi I am learning PHP.</h1>
 <a href="/about/user">About Page</a>
+<a href="{{ route('pfl') }}">Profile</a>
 <a href="{{ URL::to('about-me', ['HK']) }}">Another About Page</a>
 
 {{ random_int(1, 100) }}
