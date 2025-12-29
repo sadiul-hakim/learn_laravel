@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserFormController;
 
 Route::get("/", function () {
     return view("home");
@@ -21,3 +22,6 @@ Route::get("/user",[UserController::class,'getUser']);
 Route::get("/user-page",[UserController::class,'userPage']);
 
 // For templates under nested folder use '.', Like admin/admin.blade.php -> admin.admin
+
+Route::view("/user-form","user-form");
+Route::post("/submit-user-data",[UserFormController::class,'handleUserData']);
