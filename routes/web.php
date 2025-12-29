@@ -4,6 +4,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserFormController;
+use App\Http\Middleware\CountryChecker;
 use App\Http\Middleware\LogInChecker;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +37,7 @@ Route::middleware("user_middleware")->group(function () {
 
 // Directly apply middleware here, no need to append inside app.php
 Route::view('/user-form', 'user-form') -> middleware(LogInChecker::class);
+// ? Route::view('/user-form', 'user-form') -> middleware([LogInChecker::class,CountryChecker::class]);
 Route::post('/submit-user-data', [UserFormController::class, 'handleUserData']);
 
 Route::view('/user/profile/view', 'profile')->name('pfl');
