@@ -37,6 +37,8 @@ Route::prefix('/student')->group(function () {
     Route::delete('/delete', [StudentController::class, 'deleteStudent']);
 });
 
+Route::view('/blocked','blocked');
+
 // Route Grouping with Controller
 Route::prefix("/teacher")->controller(TeacherController::class)->group(function () {
     Route::post('/create', 'createTeacher');
@@ -44,3 +46,5 @@ Route::prefix("/teacher")->controller(TeacherController::class)->group(function 
     Route::delete('/delete', 'deleteTeacher');
     Route::delete('/about/{name}', 'aboutTeacher');
 });
+
+// Global, Route, Group Middleware
