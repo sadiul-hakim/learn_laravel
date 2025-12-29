@@ -20,8 +20,8 @@ Route::redirect('/home', '/');
 
 // Route::view("/contact-us","contact_up");
 
-Route::get('/user', [UserController::class, 'getUser']);
-Route::get('/user-page', [UserController::class, 'userPage']);
+Route::get('/user', [UserController::class, 'getUser']) -> middleware("user_middleware");
+Route::get('/user-page', [UserController::class, 'userPage']) -> middleware("user_middleware");
 
 // For templates under nested folder use '.', Like admin/admin.blade.php -> admin.admin
 
