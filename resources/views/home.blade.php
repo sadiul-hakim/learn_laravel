@@ -1,5 +1,8 @@
 <h1>{{ __('welcome.title') }}</h1>
-<h2>{{ __('welcome.welcomeMessage') }}</h2>
+<h2>{{ __('welcome.welcomeMessage',['name'=>'Sadiul Hakim']) }}</h2>
+<a href="/?lang=en">English</a>
+<a href="/?lang=bn">Bangla</a>
+<br/>
 <a href="/about/user">About Page</a>
 <a href="{{ route('pfl') }}">Profile</a>
 <a href="{{ URL::to('about-me', ['HK']) }}">Another About Page</a>

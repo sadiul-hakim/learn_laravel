@@ -2,6 +2,6 @@
 
 return [
     'title'=>'হাই, আমি পিএইচপি শিখছি।',
-    'welcomeMessage'=>'স্বাগতম'
+    'welcomeMessage'=>'স্বাগতম, :name'
 ];
 ?>
