@@ -8,11 +8,14 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UploadProfilePicController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserFormController;
-use App\Http\Middleware\CountryChecker;
 use App\Http\Middleware\LogInChecker;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+Route::get('/', function (Request $request) {
+    $lang = $request -> query('lang');
+    App::setLocale($lang);
     return view('home');
 });
 
