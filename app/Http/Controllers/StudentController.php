@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Http;
+
 class StudentController extends Controller
 {
     public function createStudent(): void
@@ -9,18 +11,9 @@ class StudentController extends Controller
         echo "Student Created";
     }
 
-    public function getAllStudent(): void
+    public function getAllStudent()
     {
-        print_r([
-            [
-                'name' => 'Hakim',
-                'age' => 21
-            ],
-            [
-                'name' => 'Ashik',
-                'age' => 31
-            ]
-        ]);
+        return Http::get('https://jsonplaceholder.typicode.com/users')->body();
     }
 
     public function deleteStudent(): void
