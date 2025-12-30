@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UserController;
@@ -60,3 +61,7 @@ Route::prefix("/teacher")->controller(TeacherController::class)->group(function 
 });
 
 // Global, Route, Group Middleware
+
+Route::prefix("/course") -> controller(CourseController::class) -> group(function(){
+    Route::get("/get-all","getAllCourses");
+});
