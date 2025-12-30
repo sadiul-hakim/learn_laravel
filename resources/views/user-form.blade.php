@@ -4,6 +4,11 @@
     }
 </style>
 <div>
+    @if (session('message'))
+        <p style="color:green;background-color: lightgreen;">{{ session('message') }}</p>
+        {{ session() -> reflash() }} {{-- Normally Flash session is removed after a refresh. reflash method helps to keep the session until the page is closed. --}}
+        {{-- {{ session() -> keep('name')  }}  --}} {{-- Keeps one session --}}
+        @endif
     <fieldset>
         <legend>User Form</legend>
         <form action="/submit-user-data" method="post">

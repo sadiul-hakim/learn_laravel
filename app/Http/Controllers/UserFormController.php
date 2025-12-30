@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class UserFormController extends Controller
 {
     //
 
-    public function handleUserData(Request $request):Request{
+    public function handleUserData(Request $request){
+        $request -> session() -> flash('message','user form is submitted successfully');
         $request -> validate([
             'name'=>'required | min:3 | max:20 | uppercase',
             'email'=>'required | email',
@@ -17,6 +19,8 @@ class UserFormController extends Controller
         ],[
             'name.required' => 'User Name is required'
         ]);
-        return $request;
+        return redirect('/user-form');
+        // return view('user-form');
+
     }
 }
