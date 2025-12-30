@@ -1,4 +1,4 @@
-<h1>Hi I am learning PHP.</h1>
+<h1>{{ __('welcome.title') }}</h1>
 <a href="/about/user">About Page</a>
 <a href="{{ route('pfl') }}">Profile</a>
 <a href="{{ URL::to('about-me', ['HK']) }}">Another About Page</a>
