@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\UploadProfilePicController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserFormController;
 use App\Http\Middleware\CountryChecker;
@@ -81,3 +82,6 @@ Route::get('/print-request',[HomeController::class,'printRequest']);
 Route::view('/login_page','login');
 Route::post('/login',[LoginController::class,'login']);
 Route::get('/logout',[LoginController::class,'logout']);
+
+Route::view('/upload_profile_age','upload-profile');
+Route::post('/upload_profile',[UploadProfilePicController::class,'uploadPic']);
