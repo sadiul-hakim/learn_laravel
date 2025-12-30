@@ -15,6 +15,13 @@ class LogInChecker
      */
     public function handle(Request $request, Closure $next): Response
     {
+        if(!$request -> session() -> has('user')){
+            return redirect('/login_page');
+        }
+
+        // $userData = $request -> session() -> get('user');
+
+
         echo "Checking if user is logged in";
         return $next($request);
     }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UserController;
@@ -42,7 +43,7 @@ Route::view('/user-form', 'user-form') -> middleware(LogInChecker::class);
 // ? Route::view('/user-form', 'user-form') -> middleware([LogInChecker::class,CountryChecker::class]);
 Route::post('/submit-user-data', [UserFormController::class, 'handleUserData']);
 
-Route::view('/user/profile/view', 'profile')->name('pfl');
+Route::view('/user/profile/view', 'profile')->name('pfl') -> middleware(LogInChecker::class);
 
 // Grouping app students endpoints
 Route::prefix('/student')->group(function () {
@@ -77,3 +78,6 @@ Route::prefix("/course") -> controller(CourseController::class) -> group(functio
 // Route::match(['get', 'delete'], '/user/profile', [UserController::class,'group2']);
 
 Route::get('/print-request',[HomeController::class,'printRequest']);
+Route::view('/login_page','login');
+Route::post('/login',[LoginController::class,'login']);
+Route::get('/logout',[LoginController::class,'logout']);
