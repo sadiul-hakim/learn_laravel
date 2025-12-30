@@ -64,4 +64,9 @@ Route::prefix("/teacher")->controller(TeacherController::class)->group(function 
 
 Route::prefix("/course") -> controller(CourseController::class) -> group(function(){
     Route::get("/get-all","getAllCourses");
+    Route::get("/get-all-expansive","getExpensiveCourses");
+    Route::get("/get-all-less-seat","getLessSeatCourses");
+    Route::get("/add","addCourse");
+    Route::get("/update","update");
+    Route::get("/delete","delete");
 });

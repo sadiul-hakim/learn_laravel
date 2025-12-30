@@ -11,4 +11,7 @@ class Course extends Model
     // If you have a different table name and model name. Define like this:
     protected $table = "courses";
 
+    // When we try to update a row of Model it looks for updated_at column.
+    // If we do not have this column, we can disable this behavior.
+    public $timestamps = false;
 }
