@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UserController;
@@ -57,7 +58,7 @@ Route::prefix("/teacher")->controller(TeacherController::class)->group(function 
     Route::post('/create', 'createTeacher');
     Route::get('/get-all', 'getAllTeacher');
     Route::delete('/delete', 'deleteTeacher');
-    Route::delete('/about/{name}', 'aboutTeacher');
+    Route::get('/about/{name}', 'aboutTeacher');
 });
 
 // Global, Route, Group Middleware
@@ -70,3 +71,9 @@ Route::prefix("/course") -> controller(CourseController::class) -> group(functio
     Route::get("/update","update");
     Route::get("/delete","delete");
 });
+
+// Route::any('user',[UserController::class,'any']);
+// Route::match(['put', 'post'], '/user/profile', [UserController::class,'group1']);
+// Route::match(['get', 'delete'], '/user/profile', [UserController::class,'group2']);
+
+Route::get('/print-request',[HomeController::class,'printRequest']);
